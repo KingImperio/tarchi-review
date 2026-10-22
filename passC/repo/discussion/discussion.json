@@ -1,0 +1,359 @@
+{
+  "meta": {
+    "project": "TArchI — True Archaion Intelligence",
+    "expansion": "trinary (-1, 0, +1) non-parametric intelligence without LLMs, reasoning by derivation over explicit trinary substrate, shipping knowledge as portable .tarchi package",
+    "archaion_meaning": "Intelligence From The Beginning — derivation from foundational axioms rather than interpolation from a corpus",
+    "meaning_of_true": "Trinary truth values: -1 false, 0 unknown, +1 true, applied across multiple orthogonal layers (proposition, node, edge)",
+    "recorded_by": "Fola Adam",
+    "date": "2026-10-21",
+    "session_type": "standalone_git_repo",
+    "status": "active",
+    "plan_file": "/home/fola/.kilo/plans/1792577274907-tarchi-trinary-intelligence-plan.md",
+    "origin_context": {
+      "prior_art_path": "/home/fola/oracule-core",
+      "prior_art_summary": "Python prototype frozen as binary/float control group for A/B testing, bug at learning.py:211 fixed, will be upgraded to consume .tarchi packages",
+      "relation": "control_group_for_trit_vs_bit_comparison"
+    }
+  },
+  "glossary": {
+    "Tridak": "Base-3 balanced digit {-1,0,+1}, atomic load/offload unit for TArchI",
+    "Balradix": "Numeral family: base-3 (Tridak) for atomic ops, base-10 (Baldec) for higher-level encoding, enables sign-free arithmetic",
+    "Baldec": "Base-10 balanced digit {-5..+5}, used for strength graduation and promotion in curriculum",
+    "Nubit": "Generalization of chess pieces: projects ALL legal successor states of a state at once with polarity and confidence",
+    "Astra": "Verifiable capability of 27B-param reference LLM, measured on knowledge-recall AND derivation suites",
+    "rubik_layer": "Deterministic verifier: closed finite group action, illegal states unrepresentable, zero hallucination by construction",
+    "chess_layer": "Adversarial planner: branching, value-estimating, maps to Nubit generalization",
+    "curriculum": "Knowledge acquisition pipeline replacing gradient descent: corpus -> template extraction -> canonicalization -> verification -> rule induction -> promotion -> decay/quarantine",
+    "substrate": "The explicit trinary knowledge representation containing axioms, rules, and facts at multiple layers",
+    "four_trit_roles": "Orthogonal trinary roles across layers: Truth (proposition), Polarity (edge), Epistemic (ledger), Balance (node charge)",
+    "node_27_states": "Combinations of (truth, epistemic, balance) = 27 distinct node states with deterministic lifecycle mapping",
+    "realizer": "Trait adapter that constructs answers from resolved substrate plus derivation paths for generation",
+    "tarchi_package": ".tarchi format: knowledge package with 4KiB mmap-able pages, Balradix-coded page table, two-tier integrity, composable and delta-updatable"
+  },
+  "decisions": [
+    {
+      "id": "D01",
+      "topic": "Standalone Project Structure",
+      "question": "Should TArchI be a standalone project at /home/fola/tarchi or part of oracule-core rewrite?",
+      "options": [
+        {"label": "Standalone", "recommended": true, "description": "New project at /home/fola/tarchi, separate git repo"},
+        {"label": "Merge into oracule-core", "recommended": false, "description": "Combine with existing Python prototype"},
+        {"label": "Maintain both", "recommended": false, "description": "Keep separate but coordinated"}
+      ],
+      "answer": "Established TArchI as independent project at /home/fola/tarchi",
+      "rationale": "Clean separation enables focused development and independent benchmarking from oracule-core prototype",
+      "consequences": ["Independent evolution", "Focused benchmarking", "Increased maintenance complexity"]
+    },
+    {
+      "id": "D02",
+      "topic": "Trinary Value Layering",
+      "question": "How should trinary values be structured across different abstraction levels?",
+      "options": [
+        {"label": "Three-layer approach", "recommended": true, "description": "Truth at proposition, node triune, edge polarity levels"},
+        {"label": "Single-layer trinary", "recommended": false, "description": "Overloaded axis approach"},
+        {"label": "Hierarchical decomposition", "recommended": false, "description": "Nested layering approach"}
+      ],
+      "answer": "Implemented three-level trinary layering simultaneously",
+      "rationale": "Enables comprehensive knowledge representation across different abstraction levels",
+      "consequences": ["Richer representation", "Increased complexity", "27 distinct node states"]
+    },
+    {
+      "id": "D03",
+      "topic": "Four Orthogonal Trit Roles",
+      "question": "What are the fundamental trinary roles needed for comprehensive intelligence?",
+      "options": [
+        {"label": "Four orthogonal roles", "recommended": true, "description": "Truth, Polarity, Epistemic, Balance across different layers"},
+        {"label": "Overloaded single axis", "recommended": false, "description": "Single truth concept"},
+        {"label": "Weighted combination", "recommended": false, "description": "Blended interpretation"}
+      ],
+      "answer": "Defined four orthogonal trinary roles across four layers",
+      "rationale": "Enables nuanced representation of truth, relationships, confidence, and stability",
+      "consequences": ["27 node states", "Deterministic lifecycle", "Comprehensive modeling capability"]
+    },
+    {
+      "id": "D04",
+      "topic": "Complete Intelligence Stack",
+      "question": "Should TArchI be self-contained or a router to other models?",
+      "options": [
+        {"label": "Complete stack", "recommended": true, "description": "End-to-end intelligence from perception to action"},
+        {"label": "Router architecture", "recommended": false, "description": "Delegate to external models"},
+        {"label": "Plugin system", "recommended": false, "description": "Modular with external components"}
+      ],
+      "answer": "Built complete self-contained intelligence stack",
+      "rationale": "No external dependencies, full autonomy, enables unique capabilities and benchmarking",
+      "consequences": ["Full autonomy", "Higher complexity", "Comprehensive functionality"]
+    },
+    {
+      "id": "D05",
+      "topic": "Archaion Principle",
+      "question": "How should intelligence be derived — from axioms or from data?",
+      "options": [
+        {"label": "Axiomatic derivation", "recommended": true, "description": "From foundational axioms and logical derivation"},
+        {"label": "Data interpolation", "recommended": false, "description": "Learning patterns from corpus"},
+        {"label": "Hybrid approach", "recommended": false, "description": "Combine both methods"}
+      ],
+      "answer": "Adopted Archaion: Intelligence From The Beginning",
+      "rationale": "Ensures traceable, verifiable reasoning with no hallucination",
+      "consequences": ["Traceable reasoning", "Verifiable conclusions", "Requires axiom corpus", "Harder domain adoption"]
+    },
+    {
+      "id": "D06",
+      "topic": "Staged Development",
+      "question": "How should development scope be managed — fixed upfront or staged?",
+      "options": [
+        {"label": "Staged milestones", "recommended": true, "description": "M0-M7 with independent verifiability"},
+        {"label": "Fixed scope", "recommended": false, "description": "Complete specification upfront"},
+        {"label": "Agile sprints", "recommended": false, "description": "Feature-based iteration"}
+      ],
+      "answer": "Implemented staged development with M0-M7 milestones",
+      "rationale": "Manageable development with regular validation points and flexibility for scope adjustment",
+      "consequences": ["Manageable development", "Regular validation", "Interdependency complexity"]
+    },
+    {
+      "id": "D07",
+      "topic": "Rust Core + Python Bindings",
+      "question": "What runtime and language should power TArchI?",
+      "options": [
+        {"label": "Rust core with Python bindings", "recommended": true, "description": "High performance with research accessibility"},
+        {"label": "Python-first", "recommended": false, "description": "Faster prototyping but memory issues"},
+        {"label": "Go runtime", "recommended": false, "description": "Cross-platform simplicity"}
+      ],
+      "answer": "Rust core with Python research bindings",
+      "rationale": "Rust provides no_std, SIMD, Android NDK, WASM targets; Python enables research while maintaining performance constraints",
+      "consequences": ["High performance", "Multiple platform targets", "Research accessibility", "Compilation complexity"]
+    },
+    {
+      "id": "D08",
+      "topic": "Balanced Numeral Family",
+      "question": "What numeral system should power TArchI arithmetic?",
+      "options": [
+        {"label": "Balanced radix (Balradix)", "recommended": true, "description": "Tridak (base-3) and Baldec (base-10) for sign-free arithmetic"},
+        {"label": "Binary", "recommended": false, "description": "Traditional digital systems"},
+        {"label": "Standard decimal", "recommended": false, "description": "Human-friendly but complex sign handling"}
+      ],
+      "answer": "Adopted Balradix family: Tridak (base-3) and Baldec (base-10)",
+      "rationale": "Eliminates sign bits, enables efficient negation, intuitive for decimal-familiar users",
+      "consequences": ["Sign-free arithmetic", "Canonical zero", "Efficient negation", "Specialized implementation"]
+    },
+    {
+      "id": "D09",
+      "topic": "Binary Control Group",
+      "question": "What reference implementation should TArchI use for A/B testing?",
+      "options": [
+        {"label": "Fixed oracule-core", "recommended": true, "description": "Frozen Python prototype with known bug fixed"},
+        {"label": "New implementation", "recommended": false, "description": "Independent reference"},
+        {"label": "Industry standard", "recommended": false, "description": "Commercial LLM baseline"}
+      ],
+      "answer": "Use oracule-core as frozen binary/float control group",
+      "rationale": "Direct performance comparison, bug provides improvement opportunity, enables validation",
+      "consequences": ["Direct comparison", "Bug fixation opportunity", "Backward compatibility"]
+    },
+    {
+      "id": "D10",
+      "topic": "Constructive Generation",
+      "question": "How should answers be generated without LLMs?",
+      "options": [
+        {"label": "Constructive reasoning", "recommended": true, "description": "Realizer trait adapter from substrate + derivation"},
+        {"label": "Neural generation", "recommended": false, "description": "LLM-based approaches"},
+        {"label": "Template-based", "recommended": false, "description": "Pre-crafted responses"}
+      ],
+      "answer": "Constructive generation via Realizer trait adapter",
+      "rationale": "No LLMs anywhere in system, ensures precise, factual, cited responses",
+      "consequences": ["Precise outputs", "No hallucination", "Limited expressiveness", "Complex knowledge requirement"]
+    },
+    {
+      "id": "D11",
+      "topic": "Curriculum-Based Learning",
+      "question": "How should knowledge be acquired and maintained?",
+      "options": [
+        {"label": "Curriculum pipeline", "recommended": true, "description": "Corpus -> extraction -> verification -> induction -> promotion -> decay"},
+        {"label": "Neural training", "recommended": false, "description": "Gradient descent from data"},
+        {"label": "Active learning", "recommended": false, "description": "Query-based knowledge acquisition"}
+      ],
+      "answer": "Implemented curriculum-based learning pipeline",
+      "rationale": "No training step, continuous GPU-free learning, single-fact correction, verifiable facts only",
+      "consequences": ["No neural training", "Continuous learning", "GPU-free operation", "Single-fact correction", "Complex pipeline"]
+    },
+    {
+      "id": "D12",
+      "topic": "Closed-Domain v0.1",
+      "question": "What scope should v0.1 target for initial release?",
+      "options": [
+        {"label": "Closed-domain", "recommended": true, "description": "RESOLVE + EXPLAIN + CITE over curated domains"},
+        {"label": "Open-domain", "recommended": false, "description": "General question answering"},
+        {"label": "Conversational", "recommended": false, "description": "Extended dialogue capability"}
+      ],
+      "answer": "v0.1 scope: closed-domain RESOLVE + EXPLAIN + CITE",
+      "rationale": "Comparable to binary control, high precision requirement, smaller implementation, clear metrics",
+      "consequences": ["Limited coverage", "High precision", "Comparable baseline", "Clear evaluation"]
+    },
+    {
+      "id": "D13",
+      "topic": "Minimal Schema Mining",
+      "question": "What schema induction should v0.1 include?",
+      "options": [
+        {"label": "Minimal schema mining", "recommended": true, "description": "Only minimal instead of full ILP"},
+        {"label": "Full ILP induction", "recommended": false, "description": "Complete rule extraction"},
+        {"label": "No schema mining", "recommended": false, "description": "Facts only approach"}
+      ],
+      "answer": "v0.1 ships with minimal schema mining, not full ILP",
+      "rationale": "Schema compression enables 10x size target, easier implementation",
+      "consequences": ["Smaller package", "Easier implementation", "Partial rule induction", "Size target achievable"]
+    },
+    {
+      "id": "D14",
+      "topic": "Curated Knowledge Corpus",
+      "question": "What knowledge source should v0.1 use?",
+      "options": [
+        {"label": "Curated corpus", "recommended": true, "description": "Prototype + Wikipedia + technical docs"},
+        {"label": "Raw web", "recommended": false, "description": "Large-scale web scraping"},
+        {"label": "User input", "recommended": false, "description": "Community-contributed"}
+      ],
+      "answer": "v0.1 knowledge: curated corpus + ground truth",
+      "rationale": "Measurable extraction quality and citation coverage, high-quality initial facts",
+      "consequences": ["High-quality facts", "Measurable performance", "Domain-specific focus", "Curation overhead"]
+    },
+    {
+      "id": "D15",
+      "topic": "Portable Knowledge Packaging",
+      "question": "What format should knowledge packaging use?",
+      "options": [
+        {"label": ".tarchi memory-mapped", "recommended": true, "description": "4KiB pages with Balradix tables"},
+        {"label": "Binary blob", "recommended": false, "description": "Compact but not memory-mapped"},
+        {"label": "Database", "recommended": false, "description": "Structured storage format"}
+      ],
+      "answer": ".tarchi package: memory-mapped pages with Balradix tables",
+      "rationale": "Efficient memory usage, sub-byte addressing, two-tier integrity, composable",
+      "consequences": ["Efficient memory", "Sub-byte addressing", "Integrity guarantees", "Composable"]
+    },
+    {
+      "id": "D16",
+      "topic": "Astra Unit Definition",
+      "question": "How should 1 Astra be defined?",
+      "options": [
+        {"label": "Verifiable capability", "recommended": true, "description": "27B LLM capability on both recall AND derivation"},
+        {"label": "Parameter count", "recommended": false, "description": "Simple size comparison"},
+        {"label": "Knowledge-only", "recommended": false, "description": "Memorization capacity only"}
+      ],
+      "answer": "1 Astra: verifiable 27B LLM capability on both knowledge-recall AND derivation",
+      "rationale": "Prevents database-only solutions, enables comprehensive intelligence comparison",
+      "consequences": ["Strict definition", "Prevents memorization", "Complex evaluation", "Two-dimensional measurement"]
+    },
+    {
+      "id": "D17",
+      "topic": "Size and Memory Targets",
+      "question": "What efficiency targets should TArchI achieve?",
+      "options": [
+        {"label": "Aggressive targets", "recommended": true, "description": "1.35GB for 1 Astra, 2GB RAM, <=1.5 bytes/fact"},
+        {"label": "Relaxed targets", "recommended": false, "description": "Higher storage requirements"},
+        {"label": "Hardware-specific", "recommended": false, "description": "Optimized for specific devices"}
+      ],
+      "answer": "Target 1.35GB for 1 Astra (vs 13.5GB reference), 2GB RAM, <=1.5 bytes/fact",
+      "rationale": "10x storage reduction enables practical deployment on consumer devices",
+      "consequences": ["Significant reduction", "Memory-efficient", "Complex implementation", "Aggressive compression"]
+    },
+    {
+      "id": "D18",
+      "topic": "Validation Metrics",
+      "question": "How should TArchI be validated?",
+      "options": [
+        {"label": "Native + A/B testing", "recommended": true, "description": "TArchI metrics plus bit-vs-trit comparison"},
+        {"label": "Industry benchmarks", "recommended": false, "description": "Standard evaluation methods"},
+        {"label": "User testing", "recommended": false, "description": "Human evaluation approach"}
+      ],
+      "answer": "Native metrics + A/B testing against binary implementations",
+      "rationale": "Comprehensive validation with direct comparison capability",
+      "consequences": ["Comprehensive", "Direct comparison", "Multiple dimensions", "Complex testing"]
+    },
+    {
+      "id": "D19",
+      "topic": "Rubik and Chess Layers",
+      "question": "How should reasoning and planning be structured?",
+      "options": [
+        {"label": "Verification + Planning layers", "recommended": true, "description": "Rubik for verification, Chess for planning"},
+        {"label": "Single unified layer", "recommended": false, "description": "Combined approach"},
+        {"label": "Pure search", "recommended": false, "description": "Monte Carlo or similar"}
+      ],
+      "answer": "Two layers: Rubik (verification) and Chess (planning) with Nubits generalization",
+      "rationale": "Deterministic verification + adversarial planning, comprehensive state exploration",
+      "consequences": ["Deterministic verification", "Zero hallucination", "Comprehensive exploration", "Strategic reasoning"]
+    },
+    {
+      "id": "D20",
+      "topic": "Classical Perception",
+      "question": "How should perception work without LLMs?",
+      "options": [
+        {"label": "Classical NLP pipeline", "recommended": true, "description": "Lexer → morphology → lexicon → parser → extraction"},
+        {"label": "Neural perception", "recommended": false, "description": "Deep learning approaches"},
+        {"label": "Hybrid", "recommended": false, "description": "Combine classical and neural"}
+      ],
+      "answer": "Classical NLP perception pipeline with language server ground truth",
+      "rationale": "Precise extraction with verifiable results, no hallucination",
+      "consequences": ["Precise extraction", "Verifiable results", "Language server dependency", "Limited modalities"]
+    }
+  ],
+  "narrative": [
+    {
+      "stage": "Origin",
+      "summary": "Project inception and foundational decisions",
+      "key_points": ["New standalone project established", "Trinary intelligence design", "Rust core architecture chosen"],
+      "key_numbers": {"milestones": 8, "trinary_layers": 3, "node_states": 27}
+    },
+    {
+      "stage": "Design interview",
+      "summary": "Architectural and implementation design decisions",
+      "key_points": ["Balanced numeral family", "Binary control group strategy", "Memory-mapped knowledge packaging"],
+      "key_numbers": {"numeral_systems": 2, "package_pages": 4, "integrity_layers": 2}
+    },
+    {
+      "stage": "The knowledge question",
+      "summary": "Knowledge acquisition and maintenance strategy",
+      "key_points": ["Curriculum-based learning", "Quarantine system", "Continuous GPU-free operation"],
+      "key_numbers": {"corpus_sources": 3, "extraction_pipeline": 5, "verification_steps": 4}
+    },
+    {
+      "stage": "Packaging and the Astra unit",
+      "summary": "Knowledge packaging and efficiency targets",
+      "key_points": ["10x storage reduction", "Sub-byte addressing", "Verifiable intelligence definition"],
+      "key_numbers": {"storage_reduction": "10x", "memory_target_gb": 1.35, "facts_per_byte": ">=0.66"}
+    }
+  ],
+  "technical_facts": [
+    {"fact": "log2(3)=1.58496 bits/trit", "implication": "Balanced ternary achieves 1.585 bits per trit, approaching theoretical maximum"},
+    {"fact": "Rubik's cube 4.3252e19 states = 66 bits vs 42 trits", "implication": "Trinary representation reduces state count vs binary by 1.8x"},
+    {"fact": "chess ~4.8e44 positions = 149 bits vs 94 trits", "implication": "Trinary chess representation saves 1.6x storage vs binary"},
+    {"fact": "8 trits = 6561 states per byte", "implication": "Sub-byte addressing enables high density in memory-mapped packages"},
+    {"fact": "TextRunner 11M triples / 500M sentences / ~91% precision", "implication": "Classical template extraction achieves high precision without neural nets"},
+    {"fact": "OWL 2 open-world semantics is already three-valued", "implication": "Semantic web standards support trinary logic"},
+    {"fact": "ILP (Aleph/Progol) generalizes rules from examples", "implication": "Inductive logic programming enables rule induction from data"},
+    {"fact": "LLM marginal storage ~10-15 bytes per fact vs TArchI target 1.5-2.5", "implication": "10x storage reduction possible vs neural networks"},
+    {"fact": "oracule-core/learning.py:211 ACTIVE NameError", "implication": "Bug fix provides immediate improvement in control group"},
+    {"fact": "oracule-core/cli.py:26 hardcoded QUERY_MAP", "implication": "Requires upgrade to consume .tarchi packages"},
+    {"fact": "Environment facts (Rust toolchain present, Python 3.12 + networkx/numpy, Node present, no Android SDK locally)", "implication": "Development environment supports current architecture choices"}
+  ],
+  "open_questions": [
+    {"id": "Q1", "question": "Which reference LLM defines 1 Astra", "candidates": ["Gemma-2-27B (exact 27B, license-gated)", "Qwen2.5-32B", "Mistral-Small-24B"], "recommendation": "Gemma-2-27B (exact 27B, license-gated, dev-time only)", "blocking": "M5"},
+    {"id": "Q2", "question": "Which realization registers ship in v0.1", "candidates": ["answer", "explain-with-trace", "contradiction notice", "compare", "summary"], "recommendation": "answer + explain + contradiction notice", "blocking": "M4"},
+    {"id": "Q3", "question": "Confirm browser/PWA as first device target before investing in NDK path", "candidates": ["PWA first", "Native mobile first", "Desktop browser"], "recommendation": "Browser/PWA as first target", "blocking": "M6"}
+  ],
+  "explicit_non_goals": [
+    "Open-domain question answering",
+    "Creative prose and conversational AI",
+    "Vision and audio perception",
+    "Real-time interactive fiction",
+    "Cross-language model serving"
+  ],
+  "honest_limits": [
+    "Traded open-domain recall and fuzzy similarity for verifiability/density/updateability/footprint (right trade for a 2 GB phone: you cannot ship a corpus but you can ship a compressed, verified, paged theory)",
+    "LLM weights carry implicit generalities no fact table expresses, so the 10x claim holds for schema-heavy curated verified knowledge only",
+    "Without an LLM realizer the language is precise and cited but not charming",
+    "Extraction recall on prose is the weakest link",
+    "If derivation parity against a 27B reference fails, split the Astra unit into knowledge-Astra and reasoning-Astra rather than overstate"
+  ],
+  "references": [
+    {"kind": "prior_art", "path": "/home/fola/oracule-core"},
+    {"kind": "plan", "path": "/home/fola/.kilo/plans/1792577274907-tarchi-trinary-intelligence-plan.md"},
+    {"kind": "docs", "path": "/home/fola/tarchi/docs/"},
+    {"kind": "lore", "path": "/home/fola/ORACULE_LORE.md"}
+  ]
+}
